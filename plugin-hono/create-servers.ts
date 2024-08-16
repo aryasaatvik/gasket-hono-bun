@@ -1,4 +1,6 @@
-export default async function createServers(gasket, serverOpts) {
+import type { Gasket } from "@gasket/core";
+
+async function createServers(gasket: Gasket, serverOpts: any) {
   console.log('Hono plugin createServers');
   const { Hono } = require('hono');
   const { config } = gasket;
@@ -13,3 +15,5 @@ export default async function createServers(gasket, serverOpts) {
     handler: app
   }
 }
+
+export default createServers;

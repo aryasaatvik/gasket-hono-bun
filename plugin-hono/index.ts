@@ -1,24 +1,25 @@
+import type { Plugin, Gasket } from '@gasket/core';
 import create from './create';
 import createServers from './create-servers';
 
-/** @type {import('@gasket/core').Plugin} */
-const plugin = {
+const plugin: Plugin = {
   name: '@gasket/plugin-hono',
   version: '7.0.0-next.53',
   description: 'Hono plugin for Gasket',
   hooks: {
     create,
     createServers,
-    actions(gasket) {
+    actions(gasket: Gasket) {
       return {
         async startServers() {
           const servers = await gasket.execWaterfall('createServers');
           return servers;
         },
         async stopServers() {
-          console.log('Hono plugin stopServers');
+          await gasket.execWaterfall('stopServers');
         }
-      }
+      };
+      
     }
   },
 }

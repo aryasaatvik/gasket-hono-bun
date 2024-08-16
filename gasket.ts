@@ -10,6 +10,7 @@ import pluginWinston from '@gasket/plugin-winston';
 import gasketData from './gasket.data';
 import pluginHono from './plugin-hono';
 import { routes } from './routes';
+import { type GasketConfigDefinition } from '@gasket/core';
 
 export default makeGasket({
   plugins: [
@@ -26,4 +27,4 @@ export default makeGasket({
   filename: import.meta.filename,
   data: gasketData,
   routes: routes
-});
+} as GasketConfigDefinition);
